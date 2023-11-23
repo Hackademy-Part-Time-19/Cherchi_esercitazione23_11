@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function premiTasto() {
+        var list = [];
+
+        while (true) {
+          let tasto = parseInt(
+            prompt(
+              "Buonasera, benvenuto.\n\nPremi 1 per aggiungere un elemento alla tua lista.\n\nPremi 2 per eliminare un elemento dalla tua lista.\n\nPremi 3 per ordinare la lista in ordine alfabetico.\n\nPremi 4 per modificare un elemento della lista.\n\nPremi 5 per eliminare l'intera lista.\n\nPremi 6 per visualizzare la lista per intero.\n\nPremi 0 per uscire."
+            )
+          );
+
+          if (isNaN(tasto)) {
+            console.log("Inserisci un numero valido.");
+            continue;
+          }
+
+          switch (tasto) {
+            case 0:
+              console.log("Arrivederci!");
+              return;
+            case 1:
+              addList(list);
+              break;
+            case 2:
+              deleteList(list);
+              break;
+            case 3:
+              sortList(list);
+              break;
+            case 4:
+              modifyList(list);
+              break;
+            case 5:
+              killList(list);
+              break;
+            case 6:
+              showList(list);
+              break;
+          }
+        }
+      }
+
+      function addList(list) {
+        var addItem = prompt("Inserisci nella lista:");
+        list.push(addItem);
+        alert("Aggiunto alla lista.");
+      }
+
+      function deleteList(list) {
+        var deleteItem = prompt("Elimina dalla lista:");
+        var index = list.indexOf(deleteItem);
+
+        if (index !== -1) {
+          list.splice(index, 1); // funzione .splice per rimuovere
+          alert("Rimosso con successo.");
+        } else {
+          alert("Non presente nella lista.");
+        }
+      }
+
+      function sortList(list) {
+        list.sort();
+        alert("Lista ordinata alfabeticamente.");
+      }
+
+      function modifyList(list) {
+        var modifyItem = prompt("inserisci l'elemento da modificare");
+        var index = list.indexOf(modifyItem);
+
+        if (index !== -1) {
+          let newItem = prompt("inserisci l'elemento modificato.");
+          list[index] = newItem;
+          alert("Modificato con successo.");
+        } else {
+          alert("Non presente nella lista.");
+        }
+      }
+
+      function killList(list) {
+        list.length = 0;
+        alert("Lista eliminata con successo.");
+      }
+
+      function showList(list) {
+        if (list.length === 0) {
+          alert("La lista è vuota.");
+        } else {
+          alert("Lista:");
+          for (let i = 0; i < list.length; i++) {
+            alert(i + 1 + ". " + list[i]);
+          }
+        }
+      }
+
+      premiTasto();
+    </script>
+  </body>
+</html>
