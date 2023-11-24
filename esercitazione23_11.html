@@ -7,8 +7,43 @@
   </head>
   <body>
     <script>
+      //definire la funzione
+      //elemento da cercare
+      //occorrenza da cercare
+      //variabile per contare occorrenze
+      //check occorrenza <= 0 non va bene
+      //for each (valore, indice)
+      //se valore = elemento da cercare incrementare il contatore
+      //se contatore = occorrenza da cercare elimina valore occorrenza
+
+      function deleteV2(list) {
+        let searchItem = prompt("Elimina dalla lista:");
+        let occurrenceItem = prompt("Quale ricorrenza vuoi eliminare?");
+        let occurrenceCount = 0;
+
+        if (occurrenceItem <= 0) {
+          alert("L'occorrenza deve essere positiva.");
+        }
+        list.forEach((element, index) => {
+          if (element === searchItem) {
+            //occurrenceCount = occurrenceCount +1
+            //occurrenceCount += 1
+            occurrenceCount++;
+            console.log(occurrenceCount);
+          }
+          if (occurrenceCount == occurrenceItem) {
+            list.splice(index, 1);
+            alert("Rimosso con successo.");
+          }
+        });
+
+        if (occurrenceItem > occurrenceCount) {
+          alert("L'elemento non è presente nella lista.");
+        }
+      }
+
       function premiTasto() {
-        var list = [];
+        let list = [];
 
         while (true) {
           let tasto = parseInt(
@@ -30,7 +65,8 @@
               addList(list);
               break;
             case 2:
-              deleteList(list);
+              // deleteList(list);
+              deleteV2(list);
               break;
             case 3:
               sortList(list);
@@ -49,14 +85,15 @@
       }
 
       function addList(list) {
-        var addItem = prompt("Inserisci nella lista:");
+        let addItem = prompt("Inserisci nella lista:");
         list.push(addItem);
         alert("Aggiunto alla lista.");
       }
 
       function deleteList(list) {
-        var deleteItem = prompt("Elimina dalla lista:");
-        var index = list.indexOf(deleteItem);
+        let deleteItem = prompt("Elimina dalla lista:");
+        let recurrenceItem = prompt("Quale ricorrenza vuoi eliminare?");
+        let index = list.indexOf(deleteItem, recurrenceItem);
 
         if (index !== -1) {
           list.splice(index, 1); // funzione .splice per rimuovere
@@ -72,11 +109,11 @@
       }
 
       function modifyList(list) {
-        var modifyItem = prompt("inserisci l'elemento da modificare");
-        var index = list.indexOf(modifyItem);
+        let modifyItem = prompt("Inserisci l'elemento da modificare");
+        let index = list.indexOf(modifyItem);
 
         if (index !== -1) {
-          let newItem = prompt("inserisci l'elemento modificato.");
+          let newItem = prompt("Inserisci l'elemento modificato.");
           list[index] = newItem;
           alert("Modificato con successo.");
         } else {

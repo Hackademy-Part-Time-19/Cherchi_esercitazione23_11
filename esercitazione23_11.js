@@ -16,4 +16,4 @@ Nota: rendi il programma reattivo, quindi ogni passo segue un feedback da parte 
 di corretta/incorretta esecuzione dell’operazione*/
 
 //  interfaccia user con switch case
-//
+//  funzione per ogni tasto
